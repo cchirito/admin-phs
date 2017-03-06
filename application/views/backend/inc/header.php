@@ -265,3 +265,5 @@
           </div>
         </div>
         <!-- /top navigation -->
+
+        <input type="hidden" id="base_url" value="<?= base_url() ?>">

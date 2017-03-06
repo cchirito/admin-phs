@@ -128,7 +128,7 @@
 
                 <div class="row x_title">
                   <div class="col-md-6">
-                    <h3>Administración de Usuarios</h3>
+                    <h3>Páginas</h3>
                   </div>
                 </div>
 

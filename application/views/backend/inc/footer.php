@@ -61,6 +61,10 @@
     <!-- bootstrap-daterangepicker -->
     <script src="<?= base_url() ?>vendors/moment/min/moment.min.js"></script>
     <script src="<?= base_url() ?>vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- PNotify -->
+    <script src="<?= base_url() ?>vendors/pnotify/dist/pnotify.js"></script>
+    <script src="<?= base_url() ?>vendors/pnotify/dist/pnotify.buttons.js"></script>
+    <script src="<?= base_url() ?>vendors/pnotify/dist/pnotify.nonblock.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="<?= base_url() ?>build/js/custom.js"></script>

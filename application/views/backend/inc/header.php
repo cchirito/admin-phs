@@ -24,6 +24,10 @@
     <link href="<?= base_url('vendors/jqvmap/dist/jqvmap.min.css') ?>" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="<?= base_url('vendors/bootstrap-daterangepicker/daterangepicker.css') ?>" rel="stylesheet">
+    <!-- PNotify -->
+    <link href="<?= base_url('vendors/pnotify/dist/pnotify.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('vendors/pnotify/dist/pnotify.buttons.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('vendors/pnotify/dist/pnotify.nonblock.css') ?>" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="<?= base_url('build/css/custom.min.css') ?>" rel="stylesheet">

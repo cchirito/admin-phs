@@ -54,6 +54,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['get_users'] = 'settings_controller/get_users';
 $route['get_users/(:num)']= 'settings_controller/get_users/$1';
-$route['put_users/(:num)'] = 'settings_controller/put_users/$1';
+$route['put_users'] = 'settings_controller/put_users';
+$route['new_user'] = 'settings_controller/new_user';
 $route['backend/paginas/(:any)'] = 'backend/paginas/$1';
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-03-2017 a las 23:27:50
+-- Tiempo de generación: 10-03-2017 a las 23:35:40
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -47,6 +47,15 @@ CREATE TABLE `pages` (
   `position` int(11) DEFAULT NULL,
   `page_type_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `pages`
+--
+
+INSERT INTO `pages` (`page_id`, `name`, `url`, `state_id`, `position`, `page_type_id`) VALUES
+(1, 'Inicio', 'inicio', 1, 1, 1),
+(2, 'Nosotros', 'nosotros', 1, 2, 1),
+(3, 'Servicios', 'servicios', 1, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -122,10 +131,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `email`, `state_id`) VALUES
+(0, '3', 'Alberto', 'administrador@phsmedia.pe', 2),
 (1, 'Carlos Alexander', 'Chirito Romero', 'cchirito@phsperu.com', 1),
 (2, 'Sheyla Alexandra', 'Chirito Romero', 'schirito@phsperu.com', 1),
-(3, NULL, NULL, 'administrador@phsmedia.pe', 1),
-(4, 'Jose', 'Ruiz', 'administrador@phsmedia.pes', 1),
+(4, 'Jose', 'Ruiz', 'administrador@phsmedia.pes', 2),
 (5, '', '', 'administrador@phsmedia.p2', 2),
 (6, '', '', 'administrador@phsmedia.pc', 2),
 (7, '', '', 'administrador@phsmedia.pcs', 2),
@@ -133,7 +142,7 @@ INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `email`, `state_id`) 
 (9, '', '', 'administrador@phsmedia.pc45', 2),
 (10, '', '', 'administrador@phsmedia.pc45df', 2),
 (11, '', '', 'administrador@phsmedia.pc45df343', 2),
-(12, NULL, NULL, 'administrador@phsmedia.pc6', 1);
+(12, '', '', 'administrador@phsmedia.pc6', 2);
 
 --
 -- Índices para tablas volcadas
@@ -194,7 +203,7 @@ ALTER TABLE `datas`
 -- AUTO_INCREMENT de la tabla `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `page_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `page_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `pages_type`
 --

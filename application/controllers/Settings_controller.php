@@ -11,10 +11,9 @@ class Settings_controller extends CI_Controller {
 
 	public function new_user() {
 
-
 		if($this->input->post()) {
 			$user = array(
-			'email' => $this->input->post('email')
+				'email' => $this->input->post('email')
 			);
 
 			$data = "";
@@ -61,7 +60,8 @@ class Settings_controller extends CI_Controller {
 									<label>Apellidos</label>
                       					<input type="text" id="fullname" class="form-control" name="apellidos" placeholder="apellidos" value="' . $user->last_name . '" />
 								</div>
-
+							</div>
+							<div class="row">
 								<div class="col-md-6">
 									<label>Email</label>
                       					<input type="text" id="fullname" class="form-control" name="email" placeholder="apellidos" value="' . $user->email . '" />

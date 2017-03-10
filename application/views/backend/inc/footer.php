@@ -10,6 +10,8 @@
     </div>
     <!-- jQuery -->
     <script src="<?= base_url() ?>vendors/jquery/dist/jquery.min.js"></script>
+    <!-- jQuery-UI -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <!-- Bootstrap -->
     <script src="<?= base_url() ?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

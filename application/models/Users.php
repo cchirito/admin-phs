@@ -3,10 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Users extends CI_Model {
 
-	public $user_id;
-	public $first_name;
-	public $last_name;
-
 	public function __construct() {
 		parent::__construct();
 		$this->load->database();

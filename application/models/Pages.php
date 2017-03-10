@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class States extends CI_Model {
+class Pages extends CI_Model {
 
 	public function __construct() {
 		parent::__construct();
@@ -9,7 +9,7 @@ class States extends CI_Model {
 	}
 
 	public function find_all() {
-		$query = $this->db->get('states');
+		$query = $this->db->get('pages');
 		return $query->result();
 	}
 	

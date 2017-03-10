@@ -5,7 +5,7 @@ class Backend extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		
+		$this->load->model("pages");
 	}
 
 	public function index() {
@@ -20,8 +20,11 @@ class Backend extends CI_Controller {
 	}
 
 	public function ajustes() {
+		$data = array(
+			'pages' => $this->pages->find_all()
+			);
 		$this->load->view('backend/inc/header');
-		$this->load->view('backend/settings_view');
+		$this->load->view('backend/settings_view', $data);
 		$this->load->view('backend/inc/footer');
 	}
 

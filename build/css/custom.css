@@ -4239,3 +4239,63 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 .dataTables_wrapper > .row{
   overflow:auto !important; /*prevent datatables overflowing its container*/
 }
+
+#page-sortable .page-item {
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 3px 1px rgba(168,168,168,1);
+    margin-bottom: 10px;
+    position: relative;
+}
+
+#page-sortable .page-item .page-content {
+    display: flex;
+    align-items: center;
+}
+
+#page-sortable .page-item .page-content span {
+    margin-right: 20px;
+}
+
+#page-sortable .page-item .page-content span.active {
+    border: 1px dashed #000;
+    padding: 0 10px;
+}
+
+#page-sortable .page-item .page-action {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#page-sortable .page-item .page-action button {
+    height: 100%;
+    margin: 0;
+    padding: 0 20px;
+    border-radius: 0;
+    bottom: 0;
+    border: 0;
+}
+
+#page-sortable .page-item .page-action button:first-child,
+#page-sortable .page-item .page-action button:nth-child(2) {
+    display: none;
+}
+
+#page-sortable .page-block {
+    position: absolute;
+    background-color: rgba(0, 0, 0, .2);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    cursor: move;
+    display: block;
+}

@@ -30,7 +30,7 @@
     <link href="<?= base_url('vendors/pnotify/dist/pnotify.nonblock.css') ?>" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="<?= base_url('build/css/custom.min.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('build/css/custom.css') ?>" rel="stylesheet">
   </head>
 
   <body class="nav-md">

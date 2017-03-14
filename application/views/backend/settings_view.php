@@ -110,7 +110,7 @@
                       <div id="page-sortable">
                         <?php $i = 0; foreach ($pages as $page) {
                           echo '<div class="page-item" data-id="' . $page->page_id . '">
-                            <div class="page-block"></div>
+                            <div class="page-block ' . ($page->state_id == 2 ? 'active' : '') . '"></div>
                             <div class="page-content">
                               <div class="page-name">
                                 <i class="fa fa-pencil"></i> <strong>PÁGINA:</strong> <span contenteditable="true">' . $page->name . '</span>

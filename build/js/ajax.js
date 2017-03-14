@@ -82,6 +82,10 @@ $(document).ready(function() {
 
 	/* PAGINAS */
 
+	var reload_pages = function() {
+		$("#page-sortable").load(location.href + " #page-sortable >*","");
+	}
+
 	$( "#page-sortable" ).sortable({
 		update: function (event, ui) {
 			var order = $(this).sortable('toArray', {
@@ -124,21 +128,13 @@ $(document).ready(function() {
 	});
 
 	$("body").on('click', ".btn_page_edit_cancel", function() {
-		var $this = $(this);
 		$("#page-sortable").sortable("enable");
-		$this.hide();
-
-		$this.prev().hide();
-		$this.next().show();
-		$this.next().next().show();
-		$this.parent().parent().children(".page-block").show();
-		$this.parent().parent().siblings().children(".page-block").css('z-index', '10');
-		$this.parent().parent().find("[contenteditable]").removeClass("active");
-	})
+		reload_pages();
+	});
 
 	$("body").on('click', ".btn_page_edit_confirm", function() {
 		var $this = $(this);
-		var array_content = []; 
+		var array_content = [];
 		var id = $this.parent().parent().attr('data-id');
 
 		$this.parent().parent().find("[contenteditable]").each(function() {
@@ -163,13 +159,8 @@ $(document).ready(function() {
 	                             });
 
 					$("#page-sortable").sortable("enable");
-				$this.hide();
-				$this.next().hide();
-				$this.next().next().show();
-				$this.next().next().next().show();
-				$this.parent().parent().children(".page-block").show();
-				$this.parent().parent().siblings().children(".page-block").css('z-index', '10');
-				$this.parent().parent().find("[contenteditable]").removeClass("active");
+					reload_pages();
+
 				} else {
 					new PNotify({
                              			title: data.title,
@@ -182,5 +173,12 @@ $(document).ready(function() {
 		});	
 
 		
-	})
+	});
+
+	$("body").on('click', ".btn_page_edit_state", function() {
+		var $this = $(this);
+
+		$this;
+		reload_pages();
+	});
 });

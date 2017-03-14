@@ -174,12 +174,12 @@ class Settings_controller extends CI_Controller {
 			$array = $this->input->post('array-sortable');
 			$id = $this->input->post('id-sortable');
 
-			if(!$this->pages->find_by_url($array[1])):
+			if(!$this->pages->find_by_url(url_title($array[1]))):
 
 			$page = array(
 				'page_id' => $id,
 				'name' => $array[0],
-				'url' => $array[1]
+				'url' => url_title($array[1])
 				);
 
 			$this->pages->update_page($page);

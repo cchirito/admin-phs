@@ -1,6 +1,7 @@
 var root = $("#base_url").val();
 
 $(document).ready(function() {
+
 	var table = $("#table_data_user").DataTable({
 		"language": {
 	            "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json"
@@ -19,8 +20,6 @@ $(document).ready(function() {
 			dataType: 'json',
 			data: $this.serialize(),
 			success: function(data) {
-				table.ajax.reload();
-				$this[0].reset();
 				if(data.type === "success") {
 					new PNotify({
                                   title: 'Excelente',
@@ -28,6 +27,8 @@ $(document).ready(function() {
                                   type: 'success',
                                   styling: 'bootstrap3'
                               });
+					table.ajax.reload();
+					$this[0].reset();
 				} else {
 					new PNotify({
                                   title: 'Error',
@@ -82,6 +83,34 @@ $(document).ready(function() {
 	/* PAGINAS */
 
 	$( "#page-sortable" ).sortable({
+		update: function (event, ui) {
+			var order = $(this).sortable('toArray', {
+				attribute: 'data-id'
+			});
+
+			size = order.length;
+
+			$.ajax({
+				url: root + 'put_position_pages',
+				method: "POST",
+				dataType: 'json',
+				data: {
+					'size-sortable': size,
+					'id-sortable': order
+				},
+				success: function(data) {
+					if(data.type === "success") {
+						new PNotify({
+	                             			title: data.title,
+		                                     text: data.message,
+		                                     type: data.type,
+		                                     styling: 'bootstrap3'
+		                             });
+					}
+				}
+			});	
+
+		}
 	});
 
 	$("body").on('click', ".btn_page_edit", function() {
@@ -101,6 +130,7 @@ $(document).ready(function() {
 
 		$this.prev().hide();
 		$this.next().show();
+		$this.next().next().show();
 		$this.parent().parent().children(".page-block").show();
 		$this.parent().parent().siblings().children(".page-block").css('z-index', '10');
 		$this.parent().parent().find("[contenteditable]").removeClass("active");
@@ -108,12 +138,49 @@ $(document).ready(function() {
 
 	$("body").on('click', ".btn_page_edit_confirm", function() {
 		var $this = $(this);
-		$("#page-sortable").sortable("enable");
-		$this.hide();
-		$this.next().hide();
-		$this.next().next().show();
-		$this.parent().parent().children(".page-block").show();
-		$this.parent().parent().siblings().children(".page-block").css('z-index', '10');
-		$this.parent().parent().find("[contenteditable]").removeClass("active");
+		var array_content = []; 
+		var id = $this.parent().parent().attr('data-id');
+
+		$this.parent().parent().find("[contenteditable]").each(function() {
+			array_content.push($(this).html());
+		});
+
+		$.ajax({
+			url: root + 'put_pages',
+			method: "POST",
+			dataType: 'json',
+			data: {
+				'id-sortable': id,
+				'array-sortable': array_content
+			},
+			success: function(data) {
+				if(data.type === "success") {
+					new PNotify({
+                             			title: data.title,
+	                                     text: data.message,
+	                                     type: data.type,
+	                                     styling: 'bootstrap3'
+	                             });
+
+					$("#page-sortable").sortable("enable");
+				$this.hide();
+				$this.next().hide();
+				$this.next().next().show();
+				$this.next().next().next().show();
+				$this.parent().parent().children(".page-block").show();
+				$this.parent().parent().siblings().children(".page-block").css('z-index', '10');
+				$this.parent().parent().find("[contenteditable]").removeClass("active");
+				} else {
+					new PNotify({
+                             			title: data.title,
+	                                     text: data.message,
+	                                     type: data.type,
+	                                     styling: 'bootstrap3'
+	                             });
+				}
+			}
+		});	
+
+		
 	})
 });

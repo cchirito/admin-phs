@@ -52,9 +52,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'inicio';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+/* USERS */
 $route['get_users'] = 'settings_controller/get_users';
 $route['get_users/(:num)']= 'settings_controller/get_users/$1';
 $route['put_users'] = 'settings_controller/put_users';
 $route['new_user'] = 'settings_controller/new_user';
+
+/* PAGES */
+$route['put_position_pages'] = 'settings_controller/put_position_pages';
+$route['put_pages'] = 'settings_controller/put_pages';
+
+/* - - - */
 $route['backend/paginas/(:any)'] = 'backend/paginas/$1';
 

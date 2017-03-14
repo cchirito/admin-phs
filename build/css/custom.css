@@ -4299,3 +4299,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     cursor: move;
     display: block;
 }
+
+#page-sortable .page-block.active {
+    background-color: rgba(0, 0, 0, .5);
+}

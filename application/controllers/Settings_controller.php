@@ -7,6 +7,7 @@ class Settings_controller extends CI_Controller {
 		parent::__construct();
 		$this->load->model('users');
 		$this->load->model('states');
+		$this->load->model('pages');
 	}
 
 	public function new_user() {
@@ -29,6 +30,7 @@ class Settings_controller extends CI_Controller {
 					"message" => "Este correo ya se encuentra registrado"
 					);
 			endif;
+			
 			echo json_encode($data);
 		}
 		
@@ -108,7 +110,7 @@ class Settings_controller extends CI_Controller {
 	}
 
 	public function put_users() {
-		if($this->input->post()) {
+		if($this->input->post()):
 			$user = array( 
 				'user_id' => $this->input->post('id'),
 				'first_name' => $this->input->post('nombres'),
@@ -116,19 +118,92 @@ class Settings_controller extends CI_Controller {
 				'email' => $this->input->post('email'),
 				'state_id' => $this->input->post('estado')
 				);
-			if($this->users->update_user($user)) {
+			if($this->users->update_user($user)):
 				$data = array(
 					"type" => "success",
 					"message" => "Datos actualizados correctamente"
 					);
-			}
+			endif;
 			
-		} else {
+		else:
 			$data = array(
 				"type" => "error",
 				"message" => "Error al enviar datos"
 				);
-		}
+		endif;
+
+		echo json_encode($data);
+	}
+
+	public function put_position_pages() {
+		$data = "";
+
+		if($this->input->post()):
+
+			$size = $this->input->post('size-sortable');
+			$id = $this->input->post('id-sortable');
+
+			for($i=0; $i < $size ; $i++) { 
+				$page = array(
+					'page_id' => $id[$i],
+					'position' => ($i + 1)
+					);
+				$this->pages->update_position($page);
+			}
+
+			$data = array(
+					"type" => "success",
+					"title" => "Excelente",
+					"message" => "Posición actualizada"
+					);
+		else:
+			$data = array(
+					"type" => "error",
+					"title" => "Peligro",
+					"message" => "Error al acceder a los datos"
+					);
+		endif;
+
+		echo json_encode($data);
+	}
+
+	public function put_pages() {
+
+		if($this->input->post()):
+
+			$array = $this->input->post('array-sortable');
+			$id = $this->input->post('id-sortable');
+
+			if(!$this->pages->find_by_url($array[1])):
+
+			$page = array(
+				'page_id' => $id,
+				'name' => $array[0],
+				'url' => $array[1]
+				);
+
+			$this->pages->update_page($page);
+
+			$data = array(
+					"type" => "success",
+					"title" => "Excelente",
+					"message" => "Datos actualizados correctamente"
+					);
+			else:
+				$data = array(
+					"type" => "error",
+					"title" => "Error",
+					"message" => "Esta URL ya existe"
+					);
+			endif;
+		else:
+			$data = array(
+					"type" => "error",
+					"title" => "Peligro",
+					"message" => "Ocurrió un error al actualizar los datos"
+					);
+		endif;
+
 		echo json_encode($data);
 	}
 	

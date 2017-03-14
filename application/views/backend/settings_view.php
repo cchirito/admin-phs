@@ -103,13 +103,13 @@
                     
                 </div>
 
-                <h2 class="page-header">Ver - Modificar - Deshabilitar usuarios</h2>
+                <h2 class="page-header">Ver - Modificar - Deshabilitar páginas</h2>
 
                 <div class="row">
                   <div class="col-md-12">
                       <div id="page-sortable">
-                        <?php foreach ($pages as $page) {
-                          echo '<div class="page-item">
+                        <?php $i = 0; foreach ($pages as $page) {
+                          echo '<div class="page-item" data-id="' . $page->page_id . '">
                             <div class="page-block"></div>
                             <div class="page-content">
                               <div class="page-name">
@@ -122,6 +122,7 @@
                             <div class="page-action">
                               <button type="button" class="btn btn-default btn_page_edit_confirm"><i class="fa fa-check"></i></button>
                               <button type="button" class="btn btn-default btn_page_edit_cancel"><i class="fa fa-close"></i></button>
+                              <button type="button" class="btn btn-default btn_page_edit_state"><i class="fa fa-eye"></i></button>
                               <button type="button" class="btn btn-default btn_page_edit"><i class="fa fa-pencil"></i></button>
                             </div>
                           </div>';

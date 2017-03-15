@@ -8,6 +8,7 @@ class Settings_controller extends CI_Controller {
 		$this->load->model('users');
 		$this->load->model('states');
 		$this->load->model('pages');
+		header('Access-Control-Allow-Origin: http://192.168.1.19');  
 	}
 
 	public function new_user() {
@@ -92,15 +93,17 @@ class Settings_controller extends CI_Controller {
 		else:
 
 		$i = 0;
-		$data_user_table = "";
+		$data_user_table = array();
 		foreach ($this->users->find_all() as $user) {
-				$data_user_table[] = array(
-				++$i,
-				$user->first_name . " " . $user->last_name,
-				$user->email,
-				($user->state_id == 1) ? '<button type="button" class="btn btn-success btn-xs" data-dismiss="modal">Activo</button>' : '<button type="button" class="btn btn-danger btn-xs" data-dismiss="modal">Inactivo</button>',
-				' <button type="button" class="btn btn-info btn-xs get_data_user" data-id="' . $user->user_id . '"><i class="fa fa-pencil"></i></button>'
-			);
+				array_push($data_user_table, 
+					array(
+						++$i,
+						$user->first_name . " " . $user->last_name,
+						$user->email,
+						($user->state_id == 1) ? '<button type="button" class="btn btn-success btn-xs" data-dismiss="modal">Activo</button>' : '<button type="button" class="btn btn-danger btn-xs" data-dismiss="modal">Inactivo</button>',
+						' <button type="button" class="btn btn-info btn-xs get_data_user" data-id="' . $user->user_id . '"><i class="fa fa-pencil"></i></button>'
+					)
+				);
 		}
 
 		$data = array("data" => $data_user_table);
@@ -143,13 +146,13 @@ class Settings_controller extends CI_Controller {
 			$size = $this->input->post('size-sortable');
 			$id = $this->input->post('id-sortable');
 
-			for($i=0; $i < $size ; $i++) { 
+			for($i=0; $i < $size ; $i++):
 				$page = array(
 					'page_id' => $id[$i],
 					'position' => ($i + 1)
 					);
 				$this->pages->update_position($page);
-			}
+			endfor;
 
 			$data = array(
 					"type" => "success",

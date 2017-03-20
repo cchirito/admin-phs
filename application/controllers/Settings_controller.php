@@ -107,8 +107,10 @@ class Settings_controller extends CI_Controller {
 		}
 
 		$data = array("data" => $data_user_table);
-		echo json_encode($data);
+		
 		endif;
+
+		echo json_encode($data);
 		
 	}
 
@@ -208,6 +210,18 @@ class Settings_controller extends CI_Controller {
 		endif;
 
 		echo json_encode($data);
+	}
+
+	public function new_page() {
+		if($this->input->post()):
+			$data = array(
+				"type" => "success",
+				"title" => "Excelente",
+				"message" => "Página creada correctamente"
+				);
+			endif;
+
+			echo json_encode($data);
 	}
 	
 }

@@ -181,4 +181,27 @@ $(document).ready(function() {
 		$this;
 		reload_pages();
 	});
+
+	$("body").on('submit', "#add_data_page", function(e) {
+		e.preventDefault();
+
+		var $this = $(this);
+
+		$.ajax({
+			url: $this.attr("action"),
+			method: "POST",
+			dataType: 'json',
+			data: $this.serialize(),
+			success: function(data) {
+				if(data.type === "success") {
+					new PNotify({
+						title: data.title,
+						text: data.message,
+						type: data.type,
+						styling: 'bootstrap3'
+					});
+				}
+			}
+		});	
+	});
 });

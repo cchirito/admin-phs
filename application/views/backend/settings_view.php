@@ -97,10 +97,25 @@
                   </div>
                 </div>
 
-                <h2 class="page-header">Registro de nuevo usuario</h2>
+                <h2 class="page-header">Registro de nueva página </h2>
 
                 <div class="row">
-                    
+                    <form id="add_data_page" action="<?= base_url('new_page') ?>" class="form-horizontal form-label-left input_mask" >
+
+                      <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+                        <input type="text" class="form-control has-feedback-left" name="name_page" placeholder="Nombre" required>
+                        <span class="fa fa-book form-control-feedback left" aria-hidden="true"></span>
+                      </div>
+
+                      <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+                        <input type="text" class="form-control has-feedback-left" name="url_page" placeholder="Url" required>
+                        <span class="fa fa-globe form-control-feedback left" aria-hidden="true"></span>
+                      </div>
+
+                      <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+                        <button type="submit" class="btn btn-danger col-md-12">Agregar</button>
+                      </div>            
+                    </form>
                 </div>
 
                 <h2 class="page-header">Ver - Modificar - Deshabilitar páginas</h2>

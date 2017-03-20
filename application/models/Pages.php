@@ -20,6 +20,11 @@ class Pages extends CI_Model {
 		return $query->row();
 	}
 
+	public function add_page($page) {
+		$this->db->insert('pages', $page);
+		return true;
+	}
+
 	public function update_position($page) {
 		$data = array(
 			'position' => $page["position"]

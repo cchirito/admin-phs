@@ -69,7 +69,12 @@
                   </li>
                   <li><a><i class="fa fa-files-o"></i> Páginas <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="form.html">General Form</a></li>
+                      <?php  
+                        foreach ($pages as $page) {
+                          echo '<li><a href="' . base_url("backend/paginas/$page->url") . '">' . $page->name . '</a></li>';
+                        }
+                      ?>
+                      
                     </ul>
                   </li>
                   <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>

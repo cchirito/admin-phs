@@ -13,7 +13,10 @@ class Backend extends CI_Controller {
 	}
 
 	public function dashboard() {
-		$this->load->view('backend/inc/header');
+		$data = array(
+			'pages' => $this->pages->find_all()
+		);
+		$this->load->view('backend/inc/header', $data);
 		$this->load->view('backend/dashboard_view');
 		$this->load->view('backend/inc/footer');
 	}
@@ -21,15 +24,18 @@ class Backend extends CI_Controller {
 	public function ajustes() {
 		$data = array(
 			'pages' => $this->pages->find_all()
-			);
-		$this->load->view('backend/inc/header');
-		$this->load->view('backend/settings_view', $data);
+		);
+		$this->load->view('backend/inc/header', $data);
+		$this->load->view('backend/settings_view');
 		$this->load->view('backend/inc/footer');
 	}
 
 	public function paginas($page = "") {
+		$data = array(
+			'pages' => $this->pages->find_all()
+		);
 		if($page != "") {
-			$this->load->view('backend/inc/header');
+			$this->load->view('backend/inc/header', $data);
 			$this->load->view('backend/page_view');
 			$this->load->view('backend/inc/footer');
 		} else {

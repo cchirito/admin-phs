@@ -31,15 +31,18 @@ class Backend extends CI_Controller {
 	}
 
 	public function paginas($page = "") {
-		$data = array(
-			'pages' => $this->pages->find_all()
-		);
-		if($page != "") {
+		
+		if($page != "" && $this->pages->find_by_url($page)) {
+			$data = array(
+				'pages' => $this->pages->find_all(),
+				'page' => $this->pages->find_by_url($page)
+			);
+			
 			$this->load->view('backend/inc/header', $data);
 			$this->load->view('backend/page_view');
 			$this->load->view('backend/inc/footer');
 		} else {
-			echo "error";
+			redirect(base_url('backend/dashboard'));
 		}
 		
 	}

@@ -107,10 +107,10 @@ class Settings_controller extends CI_Controller {
 		}
 
 		$data = array("data" => $data_user_table);
-		
+		echo json_encode($data);
 		endif;
 
-		echo json_encode($data);
+		
 		
 	}
 

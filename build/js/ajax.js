@@ -175,11 +175,41 @@ $(document).ready(function() {
 		
 	});
 
-	$("body").on('click', ".btn_page_edit_state", function() {
-		var $this = $(this);
+	$("body").on('click', ".btn_page_edit_state", function(e) {
+		e.preventDefault();
 
-		$this;
-		reload_pages();
+		var $this = $(this),
+			id = $this.parent().parent().attr("data-id"),
+			state = $this.attr("data-state");
+			
+			$.ajax({
+				url: root + "put_state_pages",
+				method: "POST",
+				dataType: 'json',
+				data: {
+					'id_page': id,
+					'state_page': state
+				},
+				success: function(data) {
+					if(data.type === "success") {
+						new PNotify({
+							title: data.title,
+							text: data.message,
+							type: data.type,
+							styling: 'bootstrap3'
+						});
+						reload_pages();
+					} else {
+						new PNotify({
+							title: data.title,
+							text: data.message,
+							type: data.type,
+							styling: 'bootstrap3'
+						});
+					}
+				}
+			});	
+		//reload_pages();
 	});
 
 	$("body").on('submit', "#add_data_page", function(e) {
@@ -194,6 +224,15 @@ $(document).ready(function() {
 			data: $this.serialize(),
 			success: function(data) {
 				if(data.type === "success") {
+					new PNotify({
+						title: data.title,
+						text: data.message,
+						type: data.type,
+						styling: 'bootstrap3'
+					});
+					$this[0].reset();
+					reload_pages();
+				} else {
 					new PNotify({
 						title: data.title,
 						text: data.message,

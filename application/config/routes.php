@@ -63,6 +63,7 @@ $route['new_user'] = 'settings_controller/new_user';
 $route['put_position_pages'] = 'settings_controller/put_position_pages';
 $route['put_pages'] = 'settings_controller/put_pages';
 $route['new_page'] = 'settings_controller/new_page';
+$route['put_state_pages'] = 'settings_controller/put_state_pages';
 
 /* - - - */
 $route['backend/paginas/(:any)'] = 'backend/paginas/$1';

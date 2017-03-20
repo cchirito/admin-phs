@@ -179,6 +179,8 @@ class Settings_controller extends CI_Controller {
 			$array = $this->input->post('array-sortable');
 			$id = $this->input->post('id-sortable');
 
+			$array[1] = strtolower($array[1]);
+
 			if(!$this->pages->find_by_url(url_title($array[1]))):
 
 			$page = array(
@@ -213,15 +215,67 @@ class Settings_controller extends CI_Controller {
 	}
 
 	public function new_page() {
+		$data = "";
+
 		if($this->input->post()):
-			$data = array(
-				"type" => "success",
-				"title" => "Excelente",
-				"message" => "Página creada correctamente"
+			$name = $this->input->post('name_page');
+			$url = $this->input->post('url_page');
+			$url = url_title(strtolower($url));
+
+			if(!$this->pages->find_by_url($url)):
+				$page = array(
+					'name' => $name,
+					'url' => $url,
+					'page_type_id' => 1
+				);
+
+				if($this->pages->add_page($page)):
+					$data = array(
+						"type" => "success",
+						"title" => "Excelente",
+						"message" => "Página creada correctamente"
+					);
+				endif;
+			else:
+				$data = array(
+					"type" => "error",
+					"title" => "Error",
+					"message" => "Esa url ya existe"
+				);
+			endif;
+		endif;
+
+		echo json_encode($data);
+	}
+
+	public function put_state_pages() {
+		if($this->input->post()):
+			$id = $this->input->post('id_page');
+			$state = $this->input->post('state_page');
+
+			$state = ($state == '1') ? '2' : '1'; 
+
+			$page = array(
+				'page_id' => $id,
+				'state_id' => $state
+			);
+
+			if($this->pages->update_state($page)):
+				$data = array(
+					"type" => "success",
+					"title" => "Excelente",
+					"message" => "Estado cambiado"
+				);
+			else:
+				$data = array(
+					"type" => "error",
+					"title" => "Error",
+					"message" => "Error al cambiar el estado"
 				);
 			endif;
 
 			echo json_encode($data);
+		endif;
 	}
 	
 }

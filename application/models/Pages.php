@@ -43,5 +43,15 @@ class Pages extends CI_Model {
 		$this->db->update('pages', $data); 
 		return true;
 	}
+
+	public function update_state($page) {
+		$data = array(
+			'state_id' => $page["state_id"]
+		);
+
+		$this->db->where('page_id', $page["page_id"]);
+		$this->db->update('pages', $data); 
+		return true;
+	}
 	
 }

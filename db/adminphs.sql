@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-03-2017 a las 23:35:40
+-- Tiempo de generación: 21-03-2017 a las 23:30:26
 -- Versión del servidor: 10.1.21-MariaDB
--- Versión de PHP: 5.6.30
+-- Versión de PHP: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -30,8 +30,20 @@ CREATE TABLE `datas` (
   `data_id` int(11) NOT NULL,
   `position` int(11) DEFAULT NULL,
   `state_id` int(11) DEFAULT NULL,
-  `template_id` int(11) DEFAULT NULL
+  `template_id` int(11) DEFAULT NULL,
+  `content` text NOT NULL,
+  `page_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `datas`
+--
+
+INSERT INTO `datas` (`data_id`, `position`, `state_id`, `template_id`, `content`, `page_id`) VALUES
+(1, 1, 1, 1, 'Mi título|subtítulo|botón', 1),
+(2, 2, 1, 2, 'Mi título|subtítulo|botón', 1),
+(3, 2, 1, 2, 'Mi título|subtítulo|botón', 1),
+(4, 2, 1, 2, 'Mi título|subtítulo|botón', 1);
 
 -- --------------------------------------------------------
 
@@ -43,8 +55,8 @@ CREATE TABLE `pages` (
   `page_id` int(11) NOT NULL,
   `name` varchar(45) DEFAULT NULL,
   `url` varchar(45) DEFAULT NULL,
-  `state_id` int(11) DEFAULT NULL,
-  `position` int(11) DEFAULT NULL,
+  `state_id` int(11) DEFAULT '1',
+  `position` int(11) DEFAULT '0',
   `page_type_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -54,8 +66,10 @@ CREATE TABLE `pages` (
 
 INSERT INTO `pages` (`page_id`, `name`, `url`, `state_id`, `position`, `page_type_id`) VALUES
 (1, 'Inicio', 'inicio', 1, 1, 1),
-(2, 'Nosotros', 'nosotros', 1, 2, 1),
-(3, 'Servicios', 'servicios', 1, 3, 1);
+(2, 'Nosotros', 'nosotros', 1, 3, 1),
+(3, 'Servicios', 'servicios', 1, 4, 1),
+(6, 'Contacto', 'contacto', 1, 5, 1),
+(7, 'Prueba', 'prueba', 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -101,6 +115,14 @@ CREATE TABLE `templates` (
   `templates_type` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `templates`
+--
+
+INSERT INTO `templates` (`template_id`, `state_id`, `name`, `class`, `templates_type`) VALUES
+(1, 1, 'Plantilla 01', 'bg-grey btn-red', 1),
+(2, 1, 'Plantilla 02', 'mi_clase clases02', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -131,7 +153,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `email`, `state_id`) VALUES
-(0, '3', 'Alberto', 'administrador@phsmedia.pe', 2),
+(0, '3', 'Alberto', 'administrador@phsmedia.pe', 1),
 (1, 'Carlos Alexander', 'Chirito Romero', 'cchirito@phsperu.com', 1),
 (2, 'Sheyla Alexandra', 'Chirito Romero', 'schirito@phsperu.com', 1),
 (4, 'Jose', 'Ruiz', 'administrador@phsmedia.pes', 2),
@@ -198,12 +220,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `datas`
 --
 ALTER TABLE `datas`
-  MODIFY `data_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `data_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `page_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `page_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `pages_type`
 --
@@ -218,7 +240,7 @@ ALTER TABLE `states`
 -- AUTO_INCREMENT de la tabla `templates`
 --
 ALTER TABLE `templates`
-  MODIFY `template_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `template_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `templates_type`
 --

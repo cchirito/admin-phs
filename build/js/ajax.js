@@ -243,4 +243,33 @@ $(document).ready(function() {
 			}
 		});	
 	});
+
+	$("#templates").sortable();
+
+	$("body").on('click', ".adm-edit", function(e) {
+		e.stopPropagation();
+		var $this = $(this);
+		$(".adm-edit").next().fadeOut("fast")
+		$this.next().fadeIn("fast");
+	})
+
+	$("body").on('click', "#templates .main-temp .btn-edit", function() {
+		var $this = $(this);
+		$main_temp = $this.parents(".main-temp");
+		
+		$main_temp.siblings().find(".adm-block").addClass("active").css("z-index", "1");
+		$main_temp.find(".adm-block").css("z-index", "-1");
+		$main_temp.siblings().find(".adm-cancel, .adm-save").hide()
+		$main_temp.find(".adm-cancel, .adm-save").show();
+	});
+
+	$("body").on('click', ".adm-cancel", function() {
+		var $this = $(this);
+		$this.parents(".main-temp").siblings().find(".adm-block").removeClass("active").css("z-index", "1");
+		$this.parents(".main-temp").find(".adm-cancel, .adm-save").hide();
+	});
+
+	$('body').click(function() {
+		$("#templates .main-temp .menu-edit").fadeOut();
+	});
 });

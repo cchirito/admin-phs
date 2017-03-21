@@ -6,6 +6,7 @@ class Backend extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model("pages");
+		$this->load->model("datas");
 	}
 
 	public function index() {
@@ -35,7 +36,8 @@ class Backend extends CI_Controller {
 		if($page != "" && $this->pages->find_by_url($page)) {
 			$data = array(
 				'pages' => $this->pages->find_all(),
-				'page' => $this->pages->find_by_url($page)
+				'page' => $this->pages->find_by_url($page),
+				'datas' => $this->datas->find_all_by_url($page)
 			);
 			
 			$this->load->view('backend/inc/header', $data);

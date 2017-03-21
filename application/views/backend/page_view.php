@@ -21,12 +21,43 @@
             <div class="clearfix"></div>
             <!-- TEMPLATES -->
             <div id="templates">
-              <?php/*
+              <?php 
+                $i = 0;
                 foreach ($datas as $data) {
-                  echo $data->content;
-                } */
-              ?>
-              <?php $this->load->view("templates") ?>
+
+                  $ncdata = explode('|', $data->content);
+
+                  echo '<div class="main-temp ' . $data->class . '">
+                        <div class="row">
+                          <div class="col-md-12 col-sm-12 col-xs-12">
+                              <div class="x_panel">
+                          <div class="adm-block"></div>
+                          <div class="adm-title">' . ++$i . " - " . $data->temp_name . '</div>
+                          <div class="adm-edit"><i class="fa fa-pencil"></i></div>
+                          <div class="menu-edit">
+                            <ul>
+                              <li class="btn-edit">Editar</li>
+                              <li class="btn-hide">Ocultar</li>
+                              <li class="btn-dlt">Eliminar</li>
+                            </ul>
+                          </div>
+                          <div class="adm-cancel"><i class="fa fa-close"></i></div>
+                          <div class="adm-save"><i class="fa fa-floppy-o"></i></div>';
+
+                          $data_array = array(
+                            "data_content" => $data->content,
+                            "data_template" => $data->template_id
+                          );
+
+                            $this->load->view("templates", $data_array);
+                            
+                          echo '</div>
+                        </div>
+                      </div>
+                    </div>';
+                  }    
+
+                  ?>
             </div>
             
             

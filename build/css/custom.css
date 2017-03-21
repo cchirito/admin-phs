@@ -4303,3 +4303,104 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 #page-sortable .page-block.active {
     background-color: rgba(0, 0, 0, .5);
 }
+
+#templates .main-temp {
+    position: relative;
+}
+
+#templates .main-temp .adm-title,
+#templates .main-temp .adm-edit {
+    position: absolute;
+    top: 0;
+    padding: 5px 10px;
+    background-color: #fff;
+    z-index: 1;
+}
+
+#templates .main-temp .adm-title {
+    left: 0;
+    border-right: 1px solid #E6E9ED;
+    border-bottom: 1px solid #E6E9ED;
+}
+
+#templates .main-temp .adm-edit {
+    right: 0;
+    border-left: 1px solid #E6E9ED;
+    border-bottom: 1px solid #E6E9ED;
+    cursor: pointer;
+}
+
+#templates .main-temp .menu-edit {
+    position: absolute;
+    top: 35px;
+    right: 5px;
+    background-color: #fff;
+    z-index: 2;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    border: 1px solid rgba(0,0,0,.2);
+    display: none;
+}
+
+#templates .main-temp .menu-edit ul,
+#templates .main-temp .menu-edit ul li {
+    margin: 0;
+    padding: 0;
+}
+
+#templates .main-temp .menu-edit ul {
+    padding: 6px 0;
+}
+
+#templates .main-temp .menu-edit ul li {
+    list-style: none;
+    width: 100%;
+    padding: 6px 32px 6px 12px;
+    cursor: pointer;
+    color: #444;
+    font-size: 12px;
+}
+
+#templates .main-temp .menu-edit ul li:hover {
+    background-color: #f5f5f5;
+}
+
+#templates .main-temp .adm-cancel {
+    position: absolute;
+    bottom: 0;
+    right: 32px;
+    padding: 5px 10px;
+    background-color: #fff;
+    z-index: 1;
+    border-left: 1px solid #E6E9ED;
+    border-top: 1px solid #E6E9ED;
+    cursor: pointer;
+    display: none;
+}
+
+#templates .main-temp .adm-save {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 5px 10px;
+    background-color: #fff;
+    z-index: 1;
+    border-left: 1px solid #E6E9ED;
+    border-top: 1px solid #E6E9ED;
+    cursor: pointer;
+    display: none;
+}
+
+#templates .main-temp .adm-block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background-color: transparent;
+    cursor: move;
+}
+
+#templates .main-temp .adm-block.active {
+    background-color: rgba(0, 0, 0, .75);
+}

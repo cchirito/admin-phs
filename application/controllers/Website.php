@@ -17,7 +17,7 @@ class Website extends CI_Controller {
                 'datas' => $this->datas->find_all_by_url($page)
             );
             $this->load->view('frontend/inc/header', $data);
-            $this->load->view('templates');
+            $this->load->view('frontend/page_view');
             $this->load->view('frontend/inc/footer');
         else:
             echo "404";
